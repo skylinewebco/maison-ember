@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Reveal from "./Reveal";
@@ -17,16 +16,25 @@ export default function Hero() {
   const imgWrapRef = useRef<HTMLDivElement | null>(null);
   const cineRef = useRef<HTMLDivElement | null>(null);
   const scrimRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const stage = stageRef.current;
     const imgWrap = imgWrapRef.current;
     const cine = cineRef.current;
     const scrim = scrimRef.current;
+    const video = videoRef.current;
     if (!stage || !imgWrap || !cine) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    // Autoplay the ambient video only when motion isn't reduced; otherwise the
+    // poster frame (the original hero photo) stays put as a static fallback.
+    if (video && !reduceMotion) {
+      video.play().catch(() => {});
+    }
+
     if (reduceMotion) return;
 
     gsap.set(stage, { perspective: 1200 });
@@ -109,14 +117,18 @@ export default function Hero() {
     <section ref={stageRef} className="relative h-[100svh] w-full overflow-hidden bg-ink">
       <div ref={imgWrapRef} className="absolute inset-0 will-change-transform">
         <div ref={cineRef} className="absolute inset-0 will-change-transform">
-          <Image
-            src={img.heroHome}
-            alt="Ember-grilled dish at Maison Ember, shrouded in gentle smoke"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            poster={img.heroHome}
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          >
+            <source src={img.heroVideo} type="video/mp4" />
+          </video>
         </div>
         <div ref={scrimRef} className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-ink/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-transparent" />

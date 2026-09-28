@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "./Reveal";
 import { restaurant } from "@/lib/data";
 import { img } from "@/lib/images";
@@ -60,12 +61,12 @@ export default function VisitReservation() {
             </div>
           </div>
 
-          <a
+          <Link
             href="/contact"
             className="mt-10 inline-block w-full text-center border border-ember bg-ember text-ink px-6 py-3.5 text-xs uppercase tracking-widest2 hover:bg-ember-light hover:border-ember-light transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             Online Reservation
-          </a>
+          </Link>
         </div>
       </Reveal>
     </section>

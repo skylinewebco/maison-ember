@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Reveal from "./Reveal";
@@ -141,12 +142,12 @@ export default function Hero() {
             {restaurant.name}
           </h1>
           <p className="mt-8 text-base md:text-lg text-cream/80 max-w-md">{restaurant.tagline}</p>
-          <a
+          <Link
             href="/contact"
             className="mt-10 inline-block border border-ember bg-ember text-ink px-8 py-4 text-xs uppercase tracking-widest2 hover:bg-ember-light hover:border-ember-light transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
           >
             Reserve Now
-          </a>
+          </Link>
         </Reveal>
       </div>
 

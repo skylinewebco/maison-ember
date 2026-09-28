@@ -1,3 +1,5 @@
+import { basePath } from "./basePath";
+
 /**
  * Centralized image config. Swap any `id` here to change the photo everywhere
  * it's used — nothing else in the app needs to change.
@@ -9,7 +11,7 @@ function unsplash(id: string, w = 1600, q = 80) {
 export const img = {
   heroHome: unsplash("1550966871-3ed3cdb5ed0c", 2400),
   /** Looping cinematic background video for the homepage hero; heroHome above is its poster/fallback. */
-  heroVideo: "/videos/hero-restaurant.mp4",
+  heroVideo: `${basePath}/videos/hero-restaurant.mp4`,
   heroAbout: unsplash("1533777857889-4be7c70b33f7", 2400),
   heroKitchen: unsplash("1424847651672-bf20a4b0982b", 2400),
   heroMenu: unsplash("1414235077428-338989a2e8c0", 2400),

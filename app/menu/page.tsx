@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import MenuItemRow from "@/components/MenuItemRow";
@@ -36,12 +37,12 @@ export default function MenuPage() {
         </div>
 
         <div className="flex justify-center mt-16">
-          <a
+          <Link
             href="/maison-ember-menu.pdf"
             className="border border-ember px-8 py-3.5 text-xs uppercase tracking-widest2 text-ember hover:bg-ember hover:text-ink transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
           >
             Download Full Menu
-          </a>
+          </Link>
         </div>
       </section>
 

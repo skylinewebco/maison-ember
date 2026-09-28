@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import MenuSection from "@/components/MenuSection";
@@ -47,18 +48,18 @@ export default function HomePage() {
       <FeaturedDish src={img.featuredDish} eyebrow="Maison Ember Signature" title="Ember-Grilled Prime Steak" />
 
       <div className="container-x pb-16 md:pb-24 flex flex-col sm:flex-row items-center justify-center gap-5">
-        <a
+        <Link
           href="/menu"
           className="border border-ember bg-ember text-ink px-8 py-3.5 text-xs uppercase tracking-widest2 hover:bg-ember-light hover:border-ember-light transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
         >
           View Full Menu
-        </a>
-        <a
+        </Link>
+        <Link
           href="/maison-ember-menu.pdf"
           className="border border-line px-8 py-3.5 text-xs uppercase tracking-widest2 text-cream hover:border-ember hover:text-ember transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
         >
           Download Menu PDF
-        </a>
+        </Link>
       </div>
 
       <ParallaxImage src={img.parallaxWide} alt="The dining room at Maison Ember at dusk" height="60vh" />
